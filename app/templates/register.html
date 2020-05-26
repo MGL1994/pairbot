@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Register Cohort</h1>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.cohort_name.label }}<br>
+            {{ form.cohort_name(size=32) }}
+            {% for error in form.cohort_name.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.student_one.label }}<br>
+            {{ form.student_one(size=32) }}
+            {% for error in form.student_one.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.student_two.label }}<br>
+            {{ form.student_two(size=32) }}
+            {% for error in form.student_two.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.student_three.label }}<br>
+            {{ form.student_three(size=32) }}
+            {% for error in form.student_three.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.student_four.label }}<br>
+            {{ form.student_four(size=32) }}
+            {% for error in form.student_four.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.student_five.label }}<br>
+            {{ form.student_five(size=32) }}
+            {% for error in form.student_five.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.student_six.label }}<br>
+            {{ form.student_six(size=32) }}
+            {% for error in form.student_six.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.student_seven.label }}<br>
+            {{ form.student_seven(size=32) }}
+            {% for error in form.student_seven.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.student_eight.label }}<br>
+            {{ form.student_eight(size=32) }}
+            {% for error in form.student_eight.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.student_nine.label }}<br>
+            {{ form.student_nine(size=32) }}
+            {% for error in form.student_nine.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.student_ten.label }}<br>
+            {{ form.student_ten(size=32) }}
+            {% for error in form.student_ten.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.student_eleven.label }}<br>
+            {{ form.student_eleven(size=32) }}
+            {% for error in form.student_eleven.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.student_twelve.label }}<br>
+            {{ form.student_twelve(size=32) }}
+            {% for error in form.student_twelve.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.student_thirteen.label }}<br>
+            {{ form.student_thirteen(size=32) }}
+            {% for error in form.student_thirteen.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.student_fourteen.label }}<br>
+            {{ form.student_fourteen(size=32) }}
+            {% for error in form.student_fourteen.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.student_fifteen.label }}<br>
+            {{ form.student_fifteen(size=32) }}
+            {% for error in form.student_fifteen.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.student_sixteen.label }}<br>
+            {{ form.student_sixteen(size=32) }}
+            {% for error in form.student_sixteen.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+{% endblock %}
