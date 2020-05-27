@@ -36,7 +36,7 @@ class Pairing(db.Model):
     pair_six = db.Column(db.String(80), nullable=False)
     pair_seven = db.Column(db.String(80), nullable=False)
     pair_eight = db.Column(db.String(80), nullable=False)
-    pairing_id = db.Column(db.Integer, db.ForeignKey('cohort.id'))
+    cohort_id = db.Column(db.Integer, db.ForeignKey('cohort.id'))
 
     def __repr__(self):
         return '<Date {}>'.format(self.date)

@@ -19,7 +19,20 @@
     <p>{{ cohort.student_fifteen }}</p>
     <p>{{ cohort.student_sixteen }}</p>
     <hr>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.cohort_name.label }}<br>
+            {{ form.cohort_name(size=32) }}<br>
+            {% for error in form.cohort_name.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+    <hr>
     {% for pairing in pairings %}
+    <h2>Paired On: {{ pairing.date }}</h2>
     <p>{{ pairing.pair_one }}</p>
     <p>{{ pairing.pair_two }}</p>
     <p>{{ pairing.pair_three }}</p>

@@ -1,9 +1,8 @@
-"""Cohort and Pairing tables added
+"""Changed tables
 
-
-Revision ID: 867f7a5624b0
+Revision ID: 057659b25b84
 Revises: 
-Create Date: 2020-05-27 15:06:11.977987
+Create Date: 2020-05-27 17:45:37.794722
 
 """
 from alembic import op
@@ -11,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '867f7a5624b0'
+revision = '057659b25b84'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -52,8 +51,8 @@ def upgrade():
     sa.Column('pair_six', sa.String(length=80), nullable=False),
     sa.Column('pair_seven', sa.String(length=80), nullable=False),
     sa.Column('pair_eight', sa.String(length=80), nullable=False),
-    sa.Column('pairing_id', sa.Integer(), nullable=True),
-    sa.ForeignKeyConstraint(['pairing_id'], ['cohort.id'], ),
+    sa.Column('cohort_id', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['cohort_id'], ['cohort.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_pairing_date'), 'pairing', ['date'], unique=True)
