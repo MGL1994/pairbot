@@ -42,9 +42,13 @@ def register():
 @app.route('/cohorts')
 def cohorts():
     cohorts = Cohort.query.all()
-    pairing = [
+    return render_template('cohorts.html', cohorts=cohorts)
+    
+@app.route('/cohort/<cohort_name>')
+def cohort(cohort_name):
+    cohort = Cohort.query.filter_by(cohort_name=cohort_name).first_or_404()
+    pairings = [
         {
-            'pairing': cohorts, 
             'pair_one': 'Test', 
             'pair_two': 'Test',
             'pair_three': 'Test',
@@ -55,5 +59,4 @@ def cohorts():
             'pair_eight': 'Test'
         }
     ]
-    return render_template('cohorts.html', cohorts=cohorts, pairing=pairing)
-    
+    return render_template('cohort.html', cohort=cohort, pairings=pairings)

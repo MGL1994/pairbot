@@ -20,7 +20,7 @@ class Cohort(db.Model):
     student_fourteen = db.Column(db.String(80), nullable=False)
     student_fifteen = db.Column(db.String(80), nullable=False)
     student_sixteen = db.Column(db.String(80), nullable=False)
-    pairings = db.relationship('Pairing', backref='pairing', lazy='dynamic')
+    pairings = db.relationship('Pairing', backref='cohort', lazy='dynamic')
 
     def __repr__(self):
         return '<Cohort {}>'.format(self.cohort_name)

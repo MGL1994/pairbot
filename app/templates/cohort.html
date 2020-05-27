@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Cohort: {{ cohort.cohort_name }}</h1>
+    <p>{{ cohort.student_one }}</p>
+    <p>{{ cohort.student_two }}</p>
+    <p>{{ cohort.student_three }}</p>
+    <p>{{ cohort.student_four }}</p>
+    <p>{{ cohort.student_five }}</p>
+    <p>{{ cohort.student_six }}</p>
+    <p>{{ cohort.student_seven }}</p>
+    <p>{{ cohort.student_eight }}</p>
+    <p>{{ cohort.student_nine }}</p>
+    <p>{{ cohort.student_ten }}</p>
+    <p>{{ cohort.student_eleven }}</p>
+    <p>{{ cohort.student_twelve }}</p>
+    <p>{{ cohort.student_thirteen }}</p>
+    <p>{{ cohort.student_fourteen }}</p>
+    <p>{{ cohort.student_fifteen }}</p>
+    <p>{{ cohort.student_sixteen }}</p>
+    <hr>
+    {% for pairing in pairings %}
+    <p>{{ pairing.pair_one }}</p>
+    <p>{{ pairing.pair_two }}</p>
+    <p>{{ pairing.pair_three }}</p>
+    <p>{{ pairing.pair_four }}</p>
+    <p>{{ pairing.pair_five }}</p>
+    <p>{{ pairing.pair_six }}</p>
+    <p>{{ pairing.pair_seven }}</p>
+    <p>{{ pairing.pair_eight }}</p>
+    {% endfor %}
+{% endblock %}

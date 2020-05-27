@@ -2,6 +2,6 @@
 
 {% block content %}
     {% for cohort in cohorts %}
-    <h2>Cohort:{{ cohort.cohort_name }}</h2>
+    <a href="{{ url_for('cohort', cohort_name=cohort.cohort_name) }}"><h2>Cohort:{{ cohort.cohort_name }}</h2></a>
     {% endfor %}
 {% endblock %}
