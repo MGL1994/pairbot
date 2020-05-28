@@ -1,3 +1,5 @@
+import random
+
 from flask import render_template, flash, redirect, url_for
 from app import app, db
 from app.forms import CohortForm, GeneratePairsForm
@@ -52,15 +54,37 @@ def cohort(cohort_name):
     if form.validate_on_submit():
         cohort_to_pair_name = form.cohort_name.data
         cohort_to_pair = Cohort.query.filter_by(cohort_name=cohort_to_pair_name).first()
+
+        students = [
+            cohort_to_pair.student_one,
+            cohort_to_pair.student_two,
+            cohort_to_pair.student_three,
+            cohort_to_pair.student_four,
+            cohort_to_pair.student_five,
+            cohort_to_pair.student_six,
+            cohort_to_pair.student_seven,
+            cohort_to_pair.student_eight,
+            cohort_to_pair.student_nine,
+            cohort_to_pair.student_ten,
+            cohort_to_pair.student_eleven,
+            cohort_to_pair.student_twelve,
+            cohort_to_pair.student_thirteen,
+            cohort_to_pair.student_fourteen,
+            cohort_to_pair.student_fifteen,
+            cohort_to_pair.student_sixteen
+        ]
+
+        randomised_students = random.sample(students, len(students))
+
         pairing = Pairing(
-            pair_one=cohort_to_pair.student_one + ' and ' + cohort_to_pair.student_two,
-            pair_two=cohort_to_pair.student_three + ' and ' + cohort_to_pair.student_four,
-            pair_three=cohort_to_pair.student_five + ' and ' + cohort_to_pair.student_six,
-            pair_four=cohort_to_pair.student_seven + ' and ' + cohort_to_pair.student_eight,
-            pair_five=cohort_to_pair.student_nine + ' and ' + cohort_to_pair.student_ten,
-            pair_six=cohort_to_pair.student_eleven + ' and ' + cohort_to_pair.student_twelve,
-            pair_seven=cohort_to_pair.student_thirteen + ' and ' + cohort_to_pair.student_fourteen,
-            pair_eight=cohort_to_pair.student_fifteen + ' and ' + cohort.student_sixteen,
+            pair_one=randomised_students[0] + ' and ' + randomised_students[1],
+            pair_two=randomised_students[2] + ' and ' + randomised_students[3],
+            pair_three=randomised_students[4] + ' and ' + randomised_students[5],
+            pair_four=randomised_students[6] + ' and ' + randomised_students[7],
+            pair_five=randomised_students[8] + ' and ' + randomised_students[9],
+            pair_six=randomised_students[10] + ' and ' + randomised_students[11],
+            pair_seven=randomised_students[12] + ' and ' + randomised_students[13],
+            pair_eight=randomised_students[14] + ' and ' + randomised_students[15],
             cohort_id=cohort_to_pair.id
             )
         db.session.add(pairing)
