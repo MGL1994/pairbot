@@ -48,19 +48,20 @@ def cohorts():
 def cohort(cohort_name):
     cohort = Cohort.query.filter_by(cohort_name=cohort_name).first_or_404()
     pairings = Pairing.query.filter_by(cohort_id=cohort.id)
-    print(pairings)
     form = GeneratePairsForm()
     if form.validate_on_submit():
+        cohort_to_pair_name = form.cohort_name.data
+        cohort_to_pair = Cohort.query.filter_by(cohort_name=cohort_to_pair_name).first()
         pairing = Pairing(
-            pair_one='Test2',
-            pair_two='Test2',
-            pair_three='Test2',
-            pair_four='Test2',
-            pair_five='Test2',
-            pair_six='Test2',
-            pair_seven='Test2',
-            pair_eight='Test2',
-            cohort_id=cohort.id
+            pair_one=cohort_to_pair.student_one + ' and ' + cohort_to_pair.student_two,
+            pair_two=cohort_to_pair.student_three + ' and ' + cohort_to_pair.student_four,
+            pair_three=cohort_to_pair.student_five + ' and ' + cohort_to_pair.student_six,
+            pair_four=cohort_to_pair.student_seven + ' and ' + cohort_to_pair.student_eight,
+            pair_five=cohort_to_pair.student_nine + ' and ' + cohort_to_pair.student_ten,
+            pair_six=cohort_to_pair.student_eleven + ' and ' + cohort_to_pair.student_twelve,
+            pair_seven=cohort_to_pair.student_thirteen + ' and ' + cohort_to_pair.student_fourteen,
+            pair_eight=cohort_to_pair.student_fifteen + ' and ' + cohort.student_sixteen,
+            cohort_id=cohort_to_pair.id
             )
         db.session.add(pairing)
         db.session.commit()
