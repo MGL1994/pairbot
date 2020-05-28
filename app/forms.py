@@ -31,3 +31,8 @@ class CohortForm(FlaskForm):
 class GeneratePairsForm(FlaskForm):
     cohort_name = StringField('Cohort Name', validators=[DataRequired()])
     submit = SubmitField('Generate Pairs')
+
+    def validate_cohort_name(self, cohort_name):
+        cohort = Cohort.query.filter_by(cohort_name=cohort_name.data).first()
+        if cohort is None:
+            raise ValidationError('This cohort does not exist')

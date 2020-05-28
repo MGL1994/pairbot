@@ -47,20 +47,8 @@ def cohorts():
 @app.route('/cohort/<cohort_name>', methods=['GET', 'POST'])
 def cohort(cohort_name):
     cohort = Cohort.query.filter_by(cohort_name=cohort_name).first_or_404()
-    pairings = cohort_name
-    # [
-    #     {
-    #         'date': '22.04.2002',
-    #         'pair_one': 'Test', 
-    #         'pair_two': 'Test',
-    #         'pair_three': 'Test',
-    #         'pair_four': 'Test',
-    #         'pair_five': 'Test',
-    #         'pair_six': 'Test',
-    #         'pair_seven': 'Test',
-    #         'pair_eight': 'Test'
-    #     }
-    # ]
+    pairings = Pairing.query.filter_by(cohort_id=cohort.id)
+    print(pairings)
     form = GeneratePairsForm()
     if form.validate_on_submit():
         pairing = Pairing(
@@ -72,10 +60,10 @@ def cohort(cohort_name):
             pair_six='Test2',
             pair_seven='Test2',
             pair_eight='Test2',
-            cohort_id=form.cohort_name.data
+            cohort_id=cohort.id
             )
         db.session.add(pairing)
         db.session.commit()
         flash('Check out your pairing')
         return redirect(url_for('cohorts'))
-    return render_template('cohort.html', cohort=cohort, pairings=pairings, form=form)
+    return render_template('cohort.html', cohort=cohort, form=form, pairings=pairings)
