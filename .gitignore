@@ -1,3 +1,5 @@
 .vscode
 .flaskenv
 config.py
+migrations
+app.db
