@@ -74,17 +74,59 @@ def cohort(cohort_name):
             cohort_to_pair.student_sixteen
         ]
 
-        randomised_students = random.sample(students, len(students))
+        def randomise_students(ordered_students):
+            return random.sample(ordered_students, len(ordered_students))
+
+        def check_for_duplicated_pairs():
+            duplicated = True
+            duplicated_count = 0
+            unique_count = 0
+            non_duplicated_students = []
+            while duplicated == True:
+                randomised_students = randomise_students(students)
+                
+                pairings_of_cohort = Pairing.query.filter_by(cohort_id=cohort_to_pair.id).all()
+                
+                existing_pairs = []
+                
+                for pairs in pairings_of_cohort:
+                    existing_pairs.append(pairs.pair_one)
+                    existing_pairs.append(pairs.pair_two)
+                    existing_pairs.append(pairs.pair_three)
+                    existing_pairs.append(pairs.pair_four)
+                    existing_pairs.append(pairs.pair_five)
+                    existing_pairs.append(pairs.pair_six)
+                    existing_pairs.append(pairs.pair_seven)
+                    existing_pairs.append(pairs.pair_eight)
+
+                sample_pair_one = randomised_students[0] + ' + ' + randomised_students[1]
+                sample_pair_two = randomised_students[1] + ' + ' + randomised_students[0]
+
+                if sample_pair_one in existing_pairs or sample_pair_two in existing_pairs:
+                    duplicated_count + 1
+                elif unique_count == 15:
+                    duplicated_count = False
+                    print('END OF PROCESS')
+                else:
+                    non_duplicated_students = randomised_students
+                    duplicated = False
+                    unique_count + 1
+   
+            print('Unique Count:', unique_count)
+            print('Duplicated Count:', duplicated_count)
+            return non_duplicated_students
+
+        new_pairings = check_for_duplicated_pairs()
 
         pairing = Pairing(
-            pair_one=randomised_students[0] + ' and ' + randomised_students[1],
-            pair_two=randomised_students[2] + ' and ' + randomised_students[3],
-            pair_three=randomised_students[4] + ' and ' + randomised_students[5],
-            pair_four=randomised_students[6] + ' and ' + randomised_students[7],
-            pair_five=randomised_students[8] + ' and ' + randomised_students[9],
-            pair_six=randomised_students[10] + ' and ' + randomised_students[11],
-            pair_seven=randomised_students[12] + ' and ' + randomised_students[13],
-            pair_eight=randomised_students[14] + ' and ' + randomised_students[15],
+            pair_one=new_pairings[0] + ' + ' + new_pairings[1],
+            pair_two=new_pairings[2] + ' + ' + new_pairings[3],
+            pair_three=new_pairings[4] + ' + ' + new_pairings[5],
+            pair_four=new_pairings[6] + ' + ' + new_pairings[7],
+            pair_five=new_pairings[8] + ' + ' + new_pairings[9],
+            pair_six=new_pairings[10] + ' + ' + new_pairings[11],
+            pair_seven=new_pairings[12] + ' + ' + new_pairings[13],
+            pair_eight=new_pairings[14] + ' + ' + new_pairings[15],
             cohort_id=cohort_to_pair.id
             )
         db.session.add(pairing)
